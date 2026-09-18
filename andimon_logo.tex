@@ -1,0 +1,27 @@
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+
+\definecolor{bg}{HTML}{C8A27A}
+\colorlet{fg}{white}
+\newcommand\logotext{andimon}
+\newlength\logosize
+\setlength\logosize{6cm}
+
+\tikzset{
+  logo/.style   = {x=\logosize, y=\logosize},
+  frame/.style  = {draw=fg, line width=.035\logosize,
+                   rounded corners=.1\logosize},
+  type/.style   = {text=fg, inner sep=0pt,
+                   font=\fontsize{#1\logosize}{#1\logosize}\selectfont\bfseries},
+  type/.default = 0.2,
+}
+
+\begin{document}
+\begin{tikzpicture}[logo]
+  \path[use as bounding box, fill=bg] (0,0) rectangle (1,1);
+  \path[frame] (.05,.05) rectangle (.95,.95);
+  \node[type] at (.5,.5) {\logotext};
+\end{tikzpicture}
+\end{document}
